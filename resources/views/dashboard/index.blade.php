@@ -1,5 +1,5 @@
-@extends('app')
-@section('title') Dashboard @endsection
+@extends('layouts.app')
+@section('title') {{ __('Dashboard') }} @endsection
 @section('content')
 <div class="app-title">
     <div>

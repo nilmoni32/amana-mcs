@@ -23,10 +23,19 @@
                 </li>
                 <li>
                 <a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i>Profile</a>
-                </li>
+                </li>               
                 <li>
-                <a class="dropdown-item" href="#"><i class="fa fa-sign-out fa-lg"></i>Logout</a>
-                </li>
+                  <div>
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                          <i class="fa fa-sign-out fa-lg"></i>{{ __('Logout') }}
+                      </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
             </ul>
         </li>
     </ul>
