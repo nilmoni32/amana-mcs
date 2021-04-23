@@ -15192,6 +15192,10 @@ be a descendant of the grid when it is being dragged.
     right: 0;
     z-index: 9;
   }
+  .table-scrollbar{
+    overflow-x:auto;
+  }
+  
 }
 
 .app-sidebar__user {
