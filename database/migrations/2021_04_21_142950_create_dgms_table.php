@@ -15,7 +15,6 @@ class CreateDgmsTable extends Migration
     {
         Schema::create('dgms', function (Blueprint $table) {
             $table->id();
-            //$table->unsignedBigInteger('branch_id')->index(); // for faster search          
             $table->string('dgm_code')->unique(); 
             $table->string('name');
             $table->string('father_name')->nullable();
@@ -32,37 +31,15 @@ class CreateDgmsTable extends Migration
             $table->string('mr_no')->nullable();
             $table->decimal('mr_amount', 20, 6)->nullable();            
             $table->dateTime('appointment_date')->nullable();            
-            $table->enum('requirement_type', ['Promoted', 'Directly Appointted'])->default('Directly Appointted');
+            $table->enum('requirement_type', ['Promoted', 'Directly Appointed'])->default('Directly Appointed');
             $table->string('branch_code')->nullable();
             $table->string('branch_name')->nullable();
             $table->string('dist_name')->nullable();
             $table->string('dist_code')->nullable();
             $table->string('head_ofc_name')->nullable();
-            $table->string('head_ofc_code')->nullable();
+            $table->string('head_ofc_code')->nullable();            
             
-            //Nominee Details.
-            $table->string('nominee_name')->nullable();
-            $table->string('nominee_father_name')->nullable();
-            $table->string('nominee_mother_name')->nullable();
-            $table->string('nominee_husband_name')->nullable();
-            $table->string('nominee_present_address',191)->nullable();
-            $table->string('nominee_permanent_address',191)->nullable();
-            $table->dateTime('nominee_date_of_birth')->nullable();
-            $table->string('nominee_photo')->nullable();
-            $table->string('nominee_signature')->nullable();
-            $table->string('nominee_nid')->nullable();
-            $table->string('nominee_email')->nullable();
-            $table->string('nominee_contact_no')->nullable();
-            $table->string('relation1')->nullable();
-            $table->string('relation_percentage1')->nullable();
-            $table->string('relation2')->nullable();
-            $table->string('relation_percentage2')->nullable();
-            $table->string('relation3')->nullable();
-            $table->string('relation_percentage3')->nullable();
-            $table->string('relation4')->nullable();
-            $table->string('relation_percentage4')->nullable();
             //chain code
-
             $table->string('gm_code')->unique()->nullable();
             $table->string('gm_name')->nullable();
             $table->string('gm_code_change_notes')->nullable();

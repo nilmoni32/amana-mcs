@@ -27,14 +27,15 @@ class BranchController extends Controller
     public function store(Request $request){
 
         $this->validate($request,[
-            'branch_code'   => 'required|unique:branches',
-            'branch_name'   => 'required|unique:branches',            
+            'branch_code'   => 'required|numeric|unique:branches,branch_code',
+            'branch_name'   => 'required|string|max:191|unique:branches,branch_name',            
             'incharge_code' => 'nullable|numeric',
-            'designation'   => 'nullable|string',
+            'designation'   => 'required|string',
             'incharge_name' => 'nullable|string', 
-            'mobile_num'    => 'nullable|unique:branches',  
-            'phone_num'     => 'nullable|unique:branches',
-            'address'       => 'nullable|max:255',                    
+            'mobile_num'    => 'nullable|regex:/(01)[3-9]{1}(\d){8}/|max:13|unique:branches,mobile_num', 
+            'phone_num'     => 'nullable|regex:/(01)[3-9]{1}(\d){8}/|max:13|unique:branches,phone_num',
+            'address'       => 'nullable|string|max:255',   
+            'list_chain_code' =>  'required|string',               
         ]);
 
         $new_branch= Branch::create([
@@ -46,6 +47,7 @@ class BranchController extends Controller
             'mobile_num'        => $request->mobile_num, 
             'phone_num'         => $request->phone_num, 
             'address'           => $request->address, 
+            'list_chain_code'   => $request->list_chain_code, 
         ]);
         
         if($new_branch){
@@ -66,14 +68,15 @@ class BranchController extends Controller
     public function update(Request $request){
 
         $this->validate($request,[
-            'branch_code'   => 'required|string|max:191',   
-            'branch_name'   => 'required|string|max:191',            
+            'branch_code'   => 'required|numeric|unique:branches,branch_code,'. $request->id, //append the id of the instance currently being updated to ignore the unique validator.
+            'branch_name'   => 'required|string|max:191|unique:branches,branch_name,'.$request->id,   //append the id of the instance currently being updated to ignore the unique validator.         
             'incharge_code' => 'nullable|numeric',
             'designation'   => 'nullable|string',
             'incharge_name' => 'nullable|string', 
-            'mobile_num'    => 'nullable|numeric',  
-            'phone_num'     => 'nullable|numeric',
-            'address'       => 'nullable|max:255',                    
+            'mobile_num'    => 'nullable|regex:/(01)[3-9]{1}(\d){8}/|max:13|unique:branches,mobile_num,'.$request->id, //append the id of the instance currently being updated to ignore the unique validator. 
+            'phone_num'     => 'nullable|regex:/(01)[3-9]{1}(\d){8}/|max:13|unique:branches,phone_num,'.$request->id, //append the id of the instance currently being updated to ignore the unique validator.
+            'address'       => 'nullable|string|max:255', 
+            'list_chain_code' =>  'required|string',                 
         ]);
 
         $edit_branch = Branch::find($request->id); 
@@ -85,6 +88,7 @@ class BranchController extends Controller
         $edit_branch->mobile_num = $request->mobile_num;
         $edit_branch->phone_num = $request->phone_num;
         $edit_branch->address = $request->address;
+        $edit_branch->list_chain_code = $request->list_chain_code;
 
         $edit_branch->save();
 

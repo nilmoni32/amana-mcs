@@ -24,7 +24,7 @@
                 <hr>
                 <div class="tile-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label" for="branch_code">{{ __('Branch Code') }}</label>
                                 <input class="form-control @error('branch_code') is-invalid @enderror" type="text"
@@ -32,7 +32,7 @@
                                 @error('branch_code') {{ $message }}@enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label" for="branch_name">{{ __('Branch Name') }}<span class="text-danger"> *</span></label>
                                 <input class="form-control @error('branch_name') is-invalid @enderror" type="text"
@@ -41,7 +41,18 @@
                                 @error('branch_name') {{ $message }}@enderror
                             </div>                            
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="list_chain_code">{{ __('Branch Chain Code List') }}</label>
+                                <input class="form-control @error('list_chain_code') is-invalid @enderror" type="text"
+                                    name="list_chain_code" id="list_chain_code" value="{{ old('list_chain_code', $branch->list_chain_code) }}">
+                                @error('list_chain_code') {{ $message }}@enderror
+                            </div>
+                        </div>
+                       
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label" for="incharge_code">{{ __('Incharge Code') }}</label>
                                 <input class="form-control @error('incharge_code') is-invalid @enderror" type="text"
@@ -49,9 +60,7 @@
                                 @error('incharge_code') {{ $message }}@enderror
                             </div>
                         </div>
-                    </div>                    
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label" for="incharge_name">{{ __('Incharge Name') }}</label>
                                 <input class="form-control @error('incharge_name') is-invalid @enderror" type="text"
@@ -59,7 +68,7 @@
                                 @error('incharge_name') {{ $message }}@enderror
                             </div>
                         </div>
-                        <div class="col-md-6">                         
+                        <div class="col-md-4">                         
                             <div class="form-group">
                                 <label class="control-label" for="designation">{{ __('Designation') }}</label>
                                 <select class="form-control custom-select mt-15 @error('designation') is-invalid @enderror"
@@ -90,7 +99,7 @@
                                     name="phone_num" id="phone_num" value="{{ old('phone_num', $branch->phone_num) }}">
                                 @error('phone_num') {{ $message }}@enderror
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="address">{{ __('Address') }}</label>

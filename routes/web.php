@@ -9,7 +9,9 @@ use App\Http\Controllers\DGMController;
 use App\Http\Controllers\RSMController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\BMNomineeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MONomineeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -68,20 +70,49 @@ Route::group(['middleware' => ['auth']], function () {
     // MO Chain Code Entry
     Route::group(['prefix' => 'chaincode/mo'], function(){
         Route::get('/', [MOController::class, 'index'])->name('MOcode.index');
+        ## Ajax Route: Ajax datatable for pagination, search and sort. 
+        Route::get('/getmodata', [MOController::class, "getmodata"])->name('MOcode.getmodata');
         Route::get('/create', [MOController::class, 'create'])->name('MOcode.create');
         Route::post('/store', [MOController::class, 'store'])->name('MOcode.store');
+        Route::get('/show/{id}', [MOController::class, 'show'])->name('MOcode.show'); 
         Route::get('/edit/{id}', [MOController::class, 'edit'])->name('MOcode.edit');
         Route::post('/update', [MOController::class, 'update'])->name('MOcode.update');
         Route::get('/delete/{id}', [MOController::class, 'delete'])->name('MOcode.delete');
     });
+
+    // Nominee: MO Chain Code 
+    Route::group(['prefix' => 'chaincode/mo/nominee'], function(){
+        Route::get('/{id}', [MONomineeController::class, 'index'])->name('MOcode.nominee.index');        
+        Route::get('/create/{id}', [MONomineeController::class, 'create'])->name('MOcode.nominee.create');
+        Route::post('/store', [MONomineeController::class, 'store'])->name('MOcode.nominee.store');
+        Route::get('/show/{id}', [MONomineeController::class, 'show'])->name('MOcode.nominee.show'); 
+        Route::get('/edit/{id}', [MONomineeController::class, 'edit'])->name('MOcode.nominee.edit');
+        Route::post('/update', [MONomineeController::class, 'update'])->name('MOcode.nominee.update');
+        Route::get('/delete/{id}', [MONomineeController::class, 'delete'])->name('MOcode.nominee.delete');   
+    });
+
     // BM Chain Code Entry
     Route::group(['prefix' => 'chaincode/bm'], function(){
         Route::get('/', [BMController::class, 'index'])->name('BMcode.index');
+        ## Ajax Route: Ajax datatable for pagination, search and sort. 
+        Route::get('/getbmdata', [BMController::class, "getbmdata"])->name('BMcode.getbmdata');
         Route::get('/create', [BMController::class, 'create'])->name('BMcode.create');
         Route::post('/store', [BMController::class, 'store'])->name('BMcode.store');
+        Route::get('/show/{id}', [BMController::class, 'show'])->name('BMcode.show'); 
         Route::get('/edit/{id}', [BMController::class, 'edit'])->name('BMcode.edit');
         Route::post('/update', [BMController::class, 'update'])->name('BMcode.update');
-        Route::get('/delete/{id}', [BMController::class, 'delete'])->name('BMcode.delete');
+        Route::get('/delete/{id}', [BMController::class, 'delete'])->name('BMcode.delete');        
+    });
+
+    // Nominee: BM Chain Code 
+    Route::group(['prefix' => 'chaincode/bm/nominee'], function(){
+        Route::get('/{id}', [BMNomineeController::class, 'index'])->name('BMcode.nominee.index');        
+        Route::get('/create/{id}', [BMNomineeController::class, 'create'])->name('BMcode.nominee.create');
+        Route::post('/store', [BMNomineeController::class, 'store'])->name('BMcode.nominee.store');
+        Route::get('/show/{id}', [BMNomineeController::class, 'show'])->name('BMcode.nominee.show'); 
+        Route::get('/edit/{id}', [BMNomineeController::class, 'edit'])->name('BMcode.nominee.edit');
+        Route::post('/update', [BMNomineeController::class, 'update'])->name('BMcode.nominee.update');
+        Route::get('/delete/{id}', [BMNomineeController::class, 'delete'])->name('BMcode.nominee.delete');   
     });
 
     // ASM Chain Code Entry

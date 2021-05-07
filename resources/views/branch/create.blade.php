@@ -24,23 +24,33 @@
                 <hr>
                 <div class="tile-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label" for="branch_code">{{ __('Branch Code') }}</label>
+                                <label class="control-label" for="branch_code">{{ __('Branch Code') }}<span class="text-danger"> *</span></label>
                                 <input class="form-control @error('branch_code') is-invalid @enderror" type="text"
-                                    name="branch_code" id="branch_code" value="{{ old('branch_code') }}">
+                                    name="branch_code" id="branch_code" value="{{ old('branch_code') }}" required>
                                 @error('branch_code') {{ $message }}@enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label" for="branch_name">{{ __('Branch Name') }}<span class="text-danger"> *</span></label>
                                 <input class="form-control @error('branch_name') is-invalid @enderror" type="text"
-                                    name="branch_name" id="branch_name" value="{{ old('branch_name') }}">
+                                    name="branch_name" id="branch_name" value="{{ old('branch_name') }}" required>
                                 @error('branch_name') {{ $message }}@enderror
                             </div>
-                        </div>                        
-                        <div class="col-md-3">
+                        </div> 
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="list_chain_code">{{ __('Branch Chain Code List') }}</label>
+                                <input class="form-control @error('list_chain_code') is-invalid @enderror" type="text"
+                                    name="list_chain_code" id="list_chain_code" value="{{ old('list_chain_code') }}">
+                                @error('list_chain_code') {{ $message }}@enderror
+                            </div>
+                        </div> 
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label" for="incharge_code">{{ __('Incharge Code') }}</label>
                                 <input class="form-control @error('incharge_code') is-invalid @enderror" type="text"
@@ -48,9 +58,7 @@
                                 @error('incharge_code') {{ $message }}@enderror
                             </div>
                         </div>
-                    </div>                    
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label" for="incharge_name">{{ __('Incharge Name') }}</label>
                                 <input class="form-control @error('incharge_name') is-invalid @enderror" type="text"
@@ -58,12 +66,12 @@
                                 @error('incharge_name') {{ $message }}@enderror
                             </div>
                         </div>
-                        <div class="col-md-6">                         
+                        <div class="col-md-4">                         
                             <div class="form-group">
                                 <label class="control-label" for="designation">{{ __('Designation') }}</label>
                                 <select class="form-control custom-select mt-15 @error('designation') is-invalid @enderror"
                                     id="designation" name="designation">
-                                    <option value="0">{{ __('Select designation type') }}</option>
+                                    <option value="" disabled selected>{{ __('Select designation type') }}</option>
                                     @foreach(['MO', 'BM', 'AGM','ASM','RSM','DGM','GM'] as $designation_type)
                                     <option value="{{ $designation_type }}">{{ $designation_type }}</option>
                                     @endforeach
@@ -89,6 +97,7 @@
                                 @error('phone_num') {{ $message }}@enderror
                             </div>
                         </div>
+                        
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="address">{{ __('Address') }}</label>

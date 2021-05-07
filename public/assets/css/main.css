@@ -2491,6 +2491,16 @@ textarea.form-control {
   width: 100%;
 }
 
+.treeview-item.current {
+  border-left: 3px solid #009688;
+}
+.swal-footer{
+  text-align: center;
+}
+.swal-button--confirm{
+  background-color: red!important;
+}
+
 @media (min-width: 576px) {
   .form-inline label {
     display: -webkit-box;
@@ -5230,6 +5240,10 @@ input[type="button"].btn-block {
   outline: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.fileinput-padding{
+  padding-bottom:33px;
 }
 
 .page-item:first-child .page-link {
@@ -8096,6 +8110,33 @@ button.bg-dark:focus {
   .align-self-lg-stretch {
     -ms-flex-item-align: stretch !important;
         align-self: stretch !important;
+  }
+}
+
+.profile-show-container{
+  margin:5px 0; 
+  background-color:rgb(176, 194, 159);
+}
+.profile-img{
+  margin-left:-15px;
+  width:200px;
+}
+
+.nominee-padding{
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+@media (max-width: 757px) {
+  .profile-show-container{
+    margin:5px 0; 
+    background-color:#fff;
+    text-align: center;
+  }
+  .profile-img{
+    margin: 0 auto;
+    width:150px;
+    margin-bottom: 10px;
   }
 }
 

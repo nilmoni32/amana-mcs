@@ -12,5 +12,5 @@ class Branch extends Model
      /**
      * @var array
      */
-    protected $fillable = ['branch_code','branch_name', 'incharge_code','designation', 'incharge_name','mobile_num','phone_num', 'address' ];
+    protected $fillable = ['branch_code','branch_name', 'incharge_code','designation', 'incharge_name','mobile_num','phone_num', 'address', 'list_chain_code' ];
 }

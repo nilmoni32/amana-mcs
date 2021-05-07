@@ -46,7 +46,7 @@
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Second group">
                                             <a href="{{ route('branch.edit', $branch->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>                                       
-                                            <a href="{{ route('branch.delete', $branch->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('branch.delete', $branch->id) }}" class="btn btn-sm btn-danger delete-confirm"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -63,7 +63,27 @@
 @push('scripts')
 <script type="text/javascript" src="{{ asset('assets/js/plugins/jquery.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/plugins/dataTables.bootstrap.min.js') }}"></script>
-<script type="text/javascript">$('#sampleTable').DataTable();</script>
+<script type="text/javascript" src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
+<script type="text/javascript">
+    $('#sampleTable').DataTable();
+
+    $('.delete-confirm').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'This record and it`s details will be permanantly deleted!',
+            icon: 'warning',
+            buttons: true,
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
+</script>
 @endpush
 
 

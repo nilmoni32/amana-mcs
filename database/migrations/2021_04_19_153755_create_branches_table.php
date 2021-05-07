@@ -27,6 +27,7 @@ class CreateBranchesTable extends Migration
             $table->string('dist_code')->nullable();
             $table->string('head_ofc_name')->nullable();
             $table->string('head_ofc_code')->nullable();
+            $table->string('list_chain_code')->nullable();
             $table->timestamps();
         });
     }
