@@ -340,7 +340,7 @@
                                     @error('mr_amount') {{ $message }}@enderror
                                 </div>
                             </div> 
-                            <input type="hidden" name="branch_name" id="branch_name">                                        
+                            <input type="hidden" name="branch_name" id="branch_name" value="{{ $mo->branch_name }}">                                        
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label" for="branch_code">{{ __('Select Branch') }}</label>

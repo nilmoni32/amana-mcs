@@ -12,28 +12,28 @@
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a href="{{ route('MOcode.nominee.index', $mo->id) }}">{{ __('MO Nominee List') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('ASMcode.nominee.index', $asm->id) }}">{{ __('ASM Nominee List') }}</a></li>
     </ul>          
 </div>
 @include('partials.flash')
 <div class="row">
     <div class="col-md-2 nominee-padding">
         <div class="tile p-0">
-            @include('chaincode.mo.includes.sidebar')
+            @include('chaincode.asm.includes.sidebar')
         </div>
     </div>
     <div class="col-md-9 nominee-padding">
         <div class="tile"> 
             <div class="row profile-show-container">                
                 <div class="col-md-3">
-                    @if($moNominee->photo)
-                    <img src="{{ asset('/storage/images/'. $moNominee->photo)}}"  class="profile-img">                                   
+                    @if($asmNominee->photo)
+                    <img src="{{ asset('/storage/images/'. $asmNominee->photo)}}"  class="profile-img">                                   
                     @else                                
                     <img src="https://via.placeholder.com/500X300?text=Photo" width="350" height="220" class="profile-img">
                     @endif
                 </div>                    
                 <div class="col-md-9 d-flex align-items-center justify-content-center">
-                    <h3 class="tile-title text-center text-uppercase">{{__('MO Nominee Account Personal Details')}}</h3>
+                    <h3 class="tile-title text-center text-uppercase">{{__('ASM Nominee Account Personal Details')}}</h3>
                 </div>
             </div>
             <hr>
@@ -42,77 +42,77 @@
                     <tbody>                       
                         <tr>
                             <td class="text-left h6">{{ __('Full Name') }}</td>
-                            <td class="text-left">{{ $moNominee->name }}</td>
+                            <td class="text-left">{{ $asmNominee->name }}</td>
                         </tr>
-                        @if($moNominee->father_name)
+                        @if($asmNominee->father_name)
                         <tr>
                             <td class="text-left h6">{{ __('Father\'s Name') }}</td>
-                            <td class="text-left">{{ $moNominee->father_name }}</td>
+                            <td class="text-left">{{ $asmNominee->father_name }}</td>
                         </tr>
                         @endif
-                        @if($moNominee->husband_name)
+                        @if($asmNominee->husband_name)
                         <tr>
                             <td class="text-left h6">{{ __('Husband\'s Name') }}</td>
-                            <td class="text-left">{{ $moNominee->husband_name }}</td>
+                            <td class="text-left">{{ $asmNominee->husband_name }}</td>
                         </tr>
                         @endif
                         <tr>
                             <td class="text-left h6">{{ __('Mother\'s Name') }}</td>
-                            <td class="text-left">{{ $moNominee->mother_name }}</td>
+                            <td class="text-left">{{ $asmNominee->mother_name }}</td>
                         </tr>
                         <tr>
                             <td class="text-left h6">{{ __('Date of Birth') }}</td>
-                            <td class="text-left">{{  date('d-m-Y', strtotime($moNominee->date_of_birth )) }}</td>
+                            <td class="text-left">{{  date('d-m-Y', strtotime($asmNominee->date_of_birth )) }}</td>
                         </tr>
                         <tr>
                             <td class='text-left h6'>{{ __('Phone Number') }}</td>
-                            <td class='text-left'>{{ $moNominee->contact_no }}</td>
+                            <td class='text-left'>{{ $asmNominee->contact_no }}</td>
                         </tr>
                         <tr>
                             <td class='text-left h6'>{{ __('NID No') }}</td>
-                            <td class='text-left'>{{ $moNominee->nid }}</td>
+                            <td class='text-left'>{{ $asmNominee->nid }}</td>
                         </tr>
-                        @if($moNominee->email)
+                        @if($asmNominee->email)
                         <tr>
                             <td class='text-left h6'>{{ __('Email') }}</td>
-                            <td class='text-left'>{{ $moNominee->email }}</td>
+                            <td class='text-left'>{{ $asmNominee->email }}</td>
                         </tr>
                         @endif
-                        @if($moNominee->present_address == $moNominee->permanent_address)
+                        @if($asmNominee->present_address == $asmNominee->permanent_address)
                         <tr>
                             <td class='text-left h6'>{{ __('Present Address') }}</td>                            
-                            <td class='text-left'>{{ $moNominee->present_address }}</td>
+                            <td class='text-left'>{{ $asmNominee->present_address }}</td>
                         </tr>
                         @else
                         <tr>
                             <td class='text-left h6'>{{ __('Present Address') }}</td>                            
-                            <td class='text-left'>{{ $moNominee->present_address }}</td>
+                            <td class='text-left'>{{ $asmNominee->present_address }}</td>
                         </tr>
                         <tr>
                             <td class='text-left h6'>{{ __('Permanent Address') }}</td>                            
-                            <td class='text-left'>{{ $moNominee->permanent_address }}</td>
+                            <td class='text-left'>{{ $asmNominee->permanent_address }}</td>
                         </tr>                        
                         @endif
-                        @if($moNominee->signature)
+                        @if($asmNominee->signature)
                         <tr>
                             <td class='text-left h6'>{{ __('Signature') }}</td>
                             <td class='text-left'>
-                                <img src='{{ asset('/storage/images/'. $moNominee->signature) }}' width='150'>
+                                <img src='{{ asset('/storage/images/'. $asmNominee->signature) }}' width='150'>
                             </td>
                         </tr>
                         @endif
                         <tr>
                             <td class="text-left h6">{{ __('Relation') }}</td>
-                            <td class="text-left">{{ $moNominee->relation }}</td>
+                            <td class="text-left">{{ $asmNominee->relation }}</td>
                         </tr>
                         <tr>
                             <td class="text-left h6">{{ __('Relation Percentage (%)') }}</td>
-                            <td class="text-left">{{ $moNominee->relation_percentage }}</td>
+                            <td class="text-left">{{ $asmNominee->relation_percentage }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="mb-5">
-                    <a href="{{ route('MOcode.nominee.index', $mo->id) }}" class="btn btn-primary pull-right">{{ __('Go Back') }}</a>  
+                    <a href="{{ route('ASMcode.nominee.index', $asm->id) }}" class="btn btn-primary pull-right">{{ __('Go Back') }}</a>  
                 </div>
             </div>
             

@@ -12,7 +12,7 @@
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a href="{{ route('MOcode.index') }}">{{ __('MO List') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('ASMcode.index') }}">{{ __('ASM List') }}</a></li>
     </ul>          
 </div>
 @include('partials.flash')
@@ -21,14 +21,14 @@
         <div class="tile"> 
             <div class="row profile-show-container">                
                 <div class="col-md-3">
-                    @if($mo->photo)
-                    <img src="{{ asset('/storage/images/'. $mo->photo)}}"  class="profile-img">                                   
+                    @if($asm->photo)
+                    <img src="{{ asset('/storage/images/'. $asm->photo)}}"  class="profile-img">                                   
                     @else                                
                     <img src="https://via.placeholder.com/500X300?text=Photo" width="350" height="220" class="profile-img">
                     @endif
                 </div>                    
                 <div class="col-md-9 d-flex align-items-center justify-content-center">
-                    <h3 class="tile-title text-center text-uppercase">{{__('MO Account Details')}}</h3>
+                    <h3 class="tile-title text-center text-uppercase">{{__('ASM Account Details')}}</h3>
                 </div>
             </div>
             <hr>
@@ -39,186 +39,153 @@
                         <tbody>
                             <tr>
                                 <td class="text-left h6">{{ __('Appointment Date') }}</td>
-                                <td class="text-left">{{  date('d-m-Y', strtotime($mo->appointment_date )) }}</td>
+                                <td class="text-left">{{  date('d-m-Y', strtotime($asm->appointment_date )) }}</td>
                                 
                             </tr>                        
                             <tr>
-                                <td class="text-left h6">{{ __('MO Code') }}</td>
-                                <td class="text-left">{{ $mo->mo_code }}</td>
+                                <td class="text-left h6">{{ __('ASM Code') }}</td>
+                                <td class="text-left">{{ $asm->asm_code }}</td>
                             </tr>
                             <tr>
                                 <td class="text-left h6">{{ __('Full Name') }}</td>
-                                <td class="text-left">{{ $mo->name }}</td>
+                                <td class="text-left">{{ $asm->name }}</td>
                             </tr>
-                            @if($mo->father_name)
+                            @if($asm->father_name)
                             <tr>
                                 <td class="text-left h6">{{ __('Father\'s Name') }}</td>
-                                <td class="text-left">{{ $mo->father_name }}</td>
+                                <td class="text-left">{{ $asm->father_name }}</td>
                             </tr>
                             @endif
-                            @if($mo->husband_name)
+                            @if($asm->husband_name)
                             <tr>
                                 <td class="text-left h6">{{ __('Husband\'s Name') }}</td>
-                                <td class="text-left">{{ $mo->husband_name }}</td>
+                                <td class="text-left">{{ $asm->husband_name }}</td>
                             </tr>
                             @endif
                             <tr>
                                 <td class="text-left h6">{{ __('Mother\'s Name') }}</td>
-                                <td class="text-left">{{ $mo->mother_name }}</td>
+                                <td class="text-left">{{ $asm->mother_name }}</td>
                             </tr>
                             <tr>
                                 <td class="text-left h6">{{ __('Date of Birth') }}</td>
-                                <td class="text-left">{{  date('d-m-Y', strtotime($mo->date_of_birth )) }}</td>
+                                <td class="text-left">{{  date('d-m-Y', strtotime($asm->date_of_birth )) }}</td>
                             </tr>
                             <tr>
                                 <td class='text-left h6'>{{ __('Phone Number') }}</td>
-                                <td class='text-left'>{{ $mo->contact_no }}</td>
+                                <td class='text-left'>{{ $asm->contact_no }}</td>
                             </tr>
                             <tr>
                                 <td class='text-left h6'>{{ __('NID No') }}</td>
-                                <td class='text-left'>{{ $mo->nid }}</td>
+                                <td class='text-left'>{{ $asm->nid }}</td>
                             </tr>
-                            @if($mo->email)
+                            @if($asm->email)
                             <tr>
                                 <td class='text-left h6'>{{ __('Email') }}</td>
-                                <td class='text-left'>{{ $mo->email }}</td>
+                                <td class='text-left'>{{ $asm->email }}</td>
                             </tr>
                             @endif
-                            @if($mo->present_address == $mo->permanent_address)
+                            @if($asm->present_address == $asm->permanent_address)
                             <tr>
                                 <td class='text-left h6'>{{ __('Present Address') }}</td>                            
-                                <td class='text-left'>{{ $mo->present_address }}</td>
+                                <td class='text-left'>{{ $asm->present_address }}</td>
                             </tr>
                             @else
                             <tr>
                                 <td class='text-left h6'>{{ __('Present Address') }}</td>                            
-                                <td class='text-left'>{{ $mo->present_address }}</td>
+                                <td class='text-left'>{{ $asm->present_address }}</td>
                             </tr>
                             <tr>
                                 <td class='text-left h6'>{{ __('Permanent Address') }}</td>                            
-                                <td class='text-left'>{{ $mo->permanent_address }}</td>
+                                <td class='text-left'>{{ $asm->permanent_address }}</td>
                             </tr>                        
                             @endif
-                            @if($mo->signature)
+                            @if($asm->signature)
                             <tr>
                                 <td class='text-left h6'>{{ __('Signature') }}</td>
                                 <td class='text-left'>
-                                    <img src='{{ asset('/storage/images/'. $mo->signature) }}' width='150'>
+                                    <img src='{{ asset('/storage/images/'. $asm->signature) }}' width='150'>
                                 </td>
                             </tr>
                             @endif
                             <tr>
                                 <td class="text-left h6">{{ __('Branch Code') }}</td>
-                                <td class="text-left">{{ $mo->branch_code }}</td>
+                                <td class="text-left">{{ $asm->branch_code }}</td>
                             </tr>
                             <tr>
                                 <td class="text-left h6">{{ __('Branch Name') }}</td>
-                                <td class="text-left">{{ $mo->branch_name }}</td>
+                                <td class="text-left">{{ $asm->branch_name }}</td>
                             </tr>
                             <tr>
                                 <td class="text-left h6">{{ __('Requirement Type') }}</td>
-                                <td class="text-left">{{ $mo->requirement_type }}</td>
+                                <td class="text-left">{{ $asm->requirement_type }}</td>
                             </tr>
-                            @if($mo->mr_no)
+                            @if($asm->mr_no)
                             <tr>
                                 <td class='text-left h6'>{{ __('MR No') }}</td>
-                                <td class="text-left">{{ $mo->mr_no }}</td>
+                                <td class="text-left">{{ $asm->mr_no }}</td>
                             </tr>
                             @endif
-                            @if($mo->mr_amount)
+                            @if($asm->mr_amount)
                             <tr>
                                 <td class='text-left h6'>{{ __('MR Amount') }}</td>
-                                <td class="text-left">{{ $mo->mr_amount }}</td>
+                                <td class="text-left">{{ $asm->mr_amount }}</td>
                             </tr>
                             @endif
                         </tbody>
                     </table>
                 </fieldset>
+                @if($asm->rsm_code || $asm->dgm_code || $asm->gm_code)
                 <fieldset class="border p-2 mb-3">
                     <legend class="w-auto h5">{{ __('Chain Code') }}</legend>
                     <table class="table table-hover table-bordered">
-                        <tbody>
-                            @if($mo->bm_code)
-                            <tr>
-                                <td class='text-left h6'>{{ __('BM Code') }}</td>
-                                <td class="text-left">{{ $mo->bm_code }}</td>
-                            </tr>
-                            <tr>
-                                <td class='text-left h6'>{{ __('BM Name') }}</td>
-                                <td class="text-left">{{ $mo->bm_name }}</td>
-                            </tr>
-                            @if($mo->bm_code_change_notes)
-                            <tr>
-                                <td class='text-left h6'>{{ __('BM Change Notes') }}</td>
-                                <td class="text-left">{{ $mo->bm_code_change_notes }}</td>
-                            </tr>
-                            @endif
-                            @endif
-
-                            @if($mo->asm_code)
-                            <tr>
-                                <td class='text-left h6'>{{ __('ASM Code') }}</td>
-                                <td class="text-left">{{ $mo->asm_code }}</td>
-                            </tr>
-                            <tr>
-                                <td class='text-left h6'>{{ __('ASM Name') }}</td>
-                                <td class="text-left">{{ $mo->asm_name }}</td>
-                            </tr>
-                            @if($mo->asm_code_change_notes)
-                            <tr>
-                                <td class='text-left h6'>{{ __('ASM Change Notes') }}</td>
-                                <td class="text-left">{{ $mo->asm_code_change_notes }}</td>
-                            </tr>
-                            @endif
-                            @endif 
-                            
-                            @if($mo->rsm_code)
+                        <tbody>                            
+                            @if($asm->rsm_code)
                             <tr>
                                 <td class='text-left h6'>{{ __('RSM Code') }}</td>
-                                <td class="text-left">{{ $mo->rsm_code }}</td>
+                                <td class="text-left">{{ $asm->rsm_code }}</td>
                             </tr>
                             <tr>
                                 <td class='text-left h6'>{{ __('RSM Name') }}</td>
-                                <td class="text-left">{{ $mo->rsm_name }}</td>
+                                <td class="text-left">{{ $asm->rsm_name }}</td>
                             </tr>
-                            @if($mo->rsm_code_change_notes)
+                            @if($asm->rsm_code_change_notes)
                             <tr>
                                 <td class='text-left h6'>{{ __('RSM Change Notes') }}</td>
-                                <td class="text-left">{{ $mo->rsm_code_change_notes }}</td>
+                                <td class="text-left">{{ $asm->rsm_code_change_notes }}</td>
                             </tr>
                             @endif
                             @endif  
 
-                            @if($mo->dgm_code)
+                            @if($asm->dgm_code)
                             <tr>
                                 <td class='text-left h6'>{{ __('DGM Code') }}</td>
-                                <td class="text-left">{{ $mo->dgm_code }}</td>
+                                <td class="text-left">{{ $asm->dgm_code }}</td>
                             </tr>
                             <tr>
                                 <td class='text-left h6'>{{ __('DGM Name') }}</td>
-                                <td class="text-left">{{ $mo->dgm_name }}</td>
+                                <td class="text-left">{{ $asm->dgm_name }}</td>
                             </tr>
-                            @if($mo->dgm_code_change_notes)
+                            @if($asm->dgm_code_change_notes)
                             <tr>
                                 <td class='text-left h6'>{{ __('DGM Change Notes') }}</td>
-                                <td class="text-left">{{ $mo->dgm_code_change_notes }}</td>
+                                <td class="text-left">{{ $asm->dgm_code_change_notes }}</td>
                             </tr>
                             @endif
                             @endif
 
-                            @if($mo->gm_code)
+                            @if($asm->gm_code)
                             <tr>
                                 <td class='text-left h6'>{{ __('GM Code') }}</td>
-                                <td class="text-left">{{ $mo->gm_code }}</td>
+                                <td class="text-left">{{ $asm->gm_code }}</td>
                             </tr>
                             <tr>
                                 <td class='text-left h6'>{{ __('GM Name') }}</td>
-                                <td class="text-left">{{ $mo->gm_name }}</td>
+                                <td class="text-left">{{ $asm->gm_name }}</td>
                             </tr>
-                            @if($mo->gm_code_change_notes)
+                            @if($asm->gm_code_change_notes)
                             <tr>
                                 <td class='text-left h6'>{{ __('GM Change Notes') }}</td>
-                                <td class="text-left">{{ $mo->gm_code_change_notes }}</td>
+                                <td class="text-left">{{ $asm->gm_code_change_notes }}</td>
                             </tr>
                             @endif
                             @endif
@@ -226,9 +193,10 @@
                         </tbody>
                     </table>
                 </fieldset>
+                @endif
                 
                 <div class="mb-5">
-                    <a href="{{ route('MOcode.index') }}" class="btn btn-primary pull-right">{{ __('Go Back') }}</a>  
+                    <a href="{{ route('ASMcode.index') }}" class="btn btn-primary pull-right">{{ __('Go Back') }}</a>  
                 </div>
             </div>
             

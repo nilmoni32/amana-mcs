@@ -12,6 +12,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\BMNomineeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MONomineeController;
+use App\Http\Controllers\ASMNomineeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -118,11 +119,25 @@ Route::group(['middleware' => ['auth']], function () {
     // ASM Chain Code Entry
     Route::group(['prefix' => 'chaincode/asm'], function(){
         Route::get('/', [ASMController::class, 'index'])->name('ASMcode.index');
+        ## Ajax Route: Ajax datatable for pagination, search and sort. 
+        Route::get('/getasmdata', [ASMController::class, "getasmdata"])->name('ASMcode.getasmdata');
         Route::get('/create', [ASMController::class, 'create'])->name('ASMcode.create');
         Route::post('/store', [ASMController::class, 'store'])->name('ASMcode.store');
+        Route::get('/show/{id}', [ASMController::class, 'show'])->name('ASMcode.show');
         Route::get('/edit/{id}', [ASMController::class, 'edit'])->name('ASMcode.edit');
         Route::post('/update', [ASMController::class, 'update'])->name('ASMcode.update');
         Route::get('/delete/{id}', [ASMController::class, 'delete'])->name('ASMcode.delete');
+    });
+
+    // Nominee: ASM Chain Code 
+    Route::group(['prefix' => 'chaincode/asm/nominee'], function(){
+        Route::get('/{id}', [ASMNomineeController::class, 'index'])->name('ASMcode.nominee.index');        
+        Route::get('/create/{id}', [ASMNomineeController::class, 'create'])->name('ASMcode.nominee.create');
+        Route::post('/store', [ASMNomineeController::class, 'store'])->name('ASMcode.nominee.store');
+        Route::get('/show/{id}', [ASMNomineeController::class, 'show'])->name('ASMcode.nominee.show'); 
+        Route::get('/edit/{id}', [ASMNomineeController::class, 'edit'])->name('ASMcode.nominee.edit');
+        Route::post('/update', [ASMNomineeController::class, 'update'])->name('ASMcode.nominee.update');
+        Route::get('/delete/{id}', [ASMNomineeController::class, 'delete'])->name('ASMcode.nominee.delete');   
     });
 
     // RSM Chain Code Entry

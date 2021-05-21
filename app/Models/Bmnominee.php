@@ -10,7 +10,7 @@ class Bmnominee extends Model
 {
     use HasFactory;
 
-     /**
+    /**
      * @var array
      */
     protected $fillable = ['bm_id','name', 'father_name', 'husband_name','mother_name','date_of_birth', 'contact_no',

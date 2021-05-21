@@ -23,6 +23,8 @@
                 <div class="col-md-3">
                     @if($bm->photo)
                     <img src="{{ asset('/storage/images/'. $bm->photo)}}"  class="profile-img">                                   
+                    @else                                
+                    <img src="https://via.placeholder.com/500X300?text=Photo" width="350" height="220" class="profile-img">
                     @endif
                 </div>                    
                 <div class="col-md-9 d-flex align-items-center justify-content-center">

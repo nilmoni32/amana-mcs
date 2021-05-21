@@ -199,7 +199,7 @@
                                         @endforeach
                                     </select>
                                 </div>  
-                                <input type="hidden" name="asm_name" id="asm_name">
+                                <input type="hidden" name="asm_name" id="asm_name" value="{{ $bm->asm_name }}">
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -214,7 +214,7 @@
                                         @endforeach
                                     </select>
                                 </div>  
-                                <input type="hidden" name="rsm_name" id="rsm_name">
+                                <input type="hidden" name="rsm_name" id="rsm_name" value="{{ $bm->rsm_name }}">
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -229,7 +229,7 @@
                                         @endforeach
                                     </select>
                                 </div>  
-                                <input type="hidden" name="dgm_name" id="dgm_name">
+                                <input type="hidden" name="dgm_name" id="dgm_name" value="{{ $bm->dgm_name }}">
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -244,7 +244,7 @@
                                         @endforeach
                                     </select>
                                 </div> 
-                                <input type="hidden" name="gm_name" id="gm_name"> 
+                                <input type="hidden" name="gm_name" id="gm_name" value="{{ $bm->gm_name }}"> 
                             </div>
                         </div>
                         <div class="row">
@@ -315,7 +315,7 @@
                                     @error('mr_amount') {{ $message }}@enderror
                                 </div>
                             </div> 
-                            <input type="hidden" name="branch_name" id="branch_name">                                        
+                            <input type="hidden" name="branch_name" id="branch_name" value="{{ $bm->branch_name }}">                                        
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label" for="branch_code">{{ __('Select Branch') }}</label>

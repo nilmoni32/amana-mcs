@@ -18,7 +18,7 @@
         <div class="tile">
             <div class="tile-body">
                 <div class="table-scrollbar">
-                    <table class="table table-hover table-bordered">
+                    <table class="table table-hover table-bordered" id="asmTable">
                         <thead>
                             <tr>
                                 <th> Sl </th>
@@ -26,41 +26,65 @@
                                 <th> ASM Code </th>
                                 <th> Name </th>
                                 <th> RSM Code </th>
-                                <th> AGM Code </th>
                                 <th> DGM Code </th>
+                                <th> GM Code </th>
                                 <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach($asms as $asm)
-                                <tr>
-                                    <td>{{ $loop->index + 1  }}</td>
-                                    <td>{{ $asm->appointment_date }}</td>
-                                    <td>{{ $asm->asm_code }}</td>
-                                    <td>{{ $asm->name }}</td>                                    
-                                    <td>{{ $asm->rsm_code }}</td>
-                                    <td>{{ $asm->agm_code }}</td>  
-                                    <td>{{ $asm->dgm_code }}</td>                                    
-                                    <td class="text-center">
-                                        <div class="btn-group" role="group" aria-label="Second group">
-                                            <a href="{{ route('ASMcode.edit', $asm->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>                                       
-                                            <a href="{{ route('ASMcode.delete', $asm->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
                     </table>
-
-                    <div class="d-flex justify-content-center">
-                        {!! $asms->links() !!}
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+{{-- we need to add  @stack('scripts') in the app.blade.php for the following scripts --}}
+@push('scripts')
+<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/sweetalert.min.js') }}"></script> 
+<script type="text/javascript">    
+   $(document).ready(function(){
+
+      // DataTable
+      $('#asmTable').DataTable({
+         processing: true,
+         serverSide: true,
+         ajax: "{{route('ASMcode.getasmdata')}}",
+         columns: [
+            { data: 'id' },
+            { data: 'appointment_date' },           
+            { data: 'asm_code' },
+            { data: 'name' },
+            { data: 'rsm_code' },
+            { data: 'dgm_code' },
+            { data: 'gm_code' },                     
+            { data: 'options' },
+         ]
+      });
+
+      
+      $(document).on('click', '.delete-confirm', function(event){
+            event.preventDefault();
+            const url = $(this).attr('href');
+            swal({
+                title: 'Are you sure?',
+                text: 'This record and it`s details will be permanantly deleted!',
+                icon: 'warning',
+                buttons: ["Cancel", "Yes!"],
+            }).then(function(value) {
+                if (value) {
+                    window.location.href = url;
+                }
+            });
+        });
+      
+
+    });
+
+    
+    </script>
+@endpush
 
 
 
