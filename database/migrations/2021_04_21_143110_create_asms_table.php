@@ -41,19 +41,19 @@ class CreateAsmsTable extends Migration
             
             
             //chain code
-            $table->string('rsm_code')->unique()->nullable();
+            $table->string('rsm_code')->nullable();
             $table->string('rsm_name')->nullable();
             $table->string('rsm_code_change_notes')->nullable();
 
-            $table->string('agm_code')->unique()->nullable();
+            $table->string('agm_code')->nullable();
             $table->string('agm_name')->nullable();
             $table->string('agm_code_change_notes')->nullable();
 
-            $table->string('dgm_code')->unique()->nullable();
+            $table->string('dgm_code')->nullable();
             $table->string('dgm_name')->nullable();
             $table->string('dgm_code_change_notes')->nullable();
 
-            $table->string('gm_code')->unique()->nullable();
+            $table->string('gm_code')->nullable();
             $table->string('gm_name')->nullable();
             $table->string('gm_code_change_notes')->nullable();
             

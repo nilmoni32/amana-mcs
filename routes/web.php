@@ -11,9 +11,12 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\BMNomineeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GMNomineeController;
 use App\Http\Controllers\MONomineeController;
 use App\Http\Controllers\ASMNomineeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DGMNomineeController;
+use App\Http\Controllers\RSMNomineeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -143,31 +146,72 @@ Route::group(['middleware' => ['auth']], function () {
     // RSM Chain Code Entry
     Route::group(['prefix' => 'chaincode/rsm'], function(){
         Route::get('/', [RSMController::class, 'index'])->name('RSMcode.index');
+        ## Ajax Route: Ajax datatable for pagination, search and sort. 
+        Route::get('/getrsmdata', [RSMController::class, "getrsmdata"])->name('RSMcode.getrsmdata');
         Route::get('/create', [RSMController::class, 'create'])->name('RSMcode.create');
         Route::post('/store', [RSMController::class, 'store'])->name('RSMcode.store');
+        Route::get('/show/{id}', [RSMController::class, 'show'])->name('RSMcode.show');
         Route::get('/edit/{id}', [RSMController::class, 'edit'])->name('RSMcode.edit');
         Route::post('/update', [RSMController::class, 'update'])->name('RSMcode.update');
         Route::get('/delete/{id}', [RSMController::class, 'delete'])->name('RSMcode.delete');
     });
 
+    // Nominee: RSM Chain Code 
+    Route::group(['prefix' => 'chaincode/rsm/nominee'], function(){
+        Route::get('/{id}', [RSMNomineeController::class, 'index'])->name('RSMcode.nominee.index');        
+        Route::get('/create/{id}', [RSMNomineeController::class, 'create'])->name('RSMcode.nominee.create');
+        Route::post('/store', [RSMNomineeController::class, 'store'])->name('RSMcode.nominee.store');
+        Route::get('/show/{id}', [RSMNomineeController::class, 'show'])->name('RSMcode.nominee.show'); 
+        Route::get('/edit/{id}', [RSMNomineeController::class, 'edit'])->name('RSMcode.nominee.edit');
+        Route::post('/update', [RSMNomineeController::class, 'update'])->name('RSMcode.nominee.update');
+        Route::get('/delete/{id}', [RSMNomineeController::class, 'delete'])->name('RSMcode.nominee.delete');   
+    });
+
     //  DGM Chain Code Entry
     Route::group(['prefix' => 'chaincode/dgm'], function(){
         Route::get('/', [DGMController::class, 'index'])->name('DGMcode.index');
+        ## Ajax Route: Ajax datatable for pagination, search and sort. 
+        Route::get('/getdgmdata', [DGMController::class, "getdgmdata"])->name('DGMcode.getdgmdata');
         Route::get('/create', [DGMController::class, 'create'])->name('DGMcode.create');
         Route::post('/store', [DGMController::class, 'store'])->name('DGMcode.store');
+        Route::get('/show/{id}', [DGMController::class, 'show'])->name('DGMcode.show');
         Route::get('/edit/{id}', [DGMController::class, 'edit'])->name('DGMcode.edit');
         Route::post('/update', [DGMController::class, 'update'])->name('DGMcode.update');
         Route::get('/delete/{id}', [DGMController::class, 'delete'])->name('DGMcode.delete');
+    });
+     // Nominee: DGM Chain Code 
+     Route::group(['prefix' => 'chaincode/dgm/nominee'], function(){
+        Route::get('/{id}', [DGMNomineeController::class, 'index'])->name('DGMcode.nominee.index');        
+        Route::get('/create/{id}', [DGMNomineeController::class, 'create'])->name('DGMcode.nominee.create');
+        Route::post('/store', [DGMNomineeController::class, 'store'])->name('DGMcode.nominee.store');
+        Route::get('/show/{id}', [DGMNomineeController::class, 'show'])->name('DGMcode.nominee.show'); 
+        Route::get('/edit/{id}', [DGMNomineeController::class, 'edit'])->name('DGMcode.nominee.edit');
+        Route::post('/update', [DGMNomineeController::class, 'update'])->name('DGMcode.nominee.update');
+        Route::get('/delete/{id}', [DGMNomineeController::class, 'delete'])->name('DGMcode.nominee.delete');   
     });
 
     //  GM Chain Code Entry
     Route::group(['prefix' => 'chaincode/gm'], function(){
         Route::get('/', [GMController::class, 'index'])->name('GMcode.index');
+        ## Ajax Route: Ajax datatable for pagination, search and sort. 
+        Route::get('/getgmdata', [GMController::class, "getgmdata"])->name('GMcode.getgmdata');
         Route::get('/create', [GMController::class, 'create'])->name('GMcode.create');
         Route::post('/store', [GMController::class, 'store'])->name('GMcode.store');
+        Route::get('/show/{id}', [GMController::class, 'show'])->name('GMcode.show');
         Route::get('/edit/{id}', [GMController::class, 'edit'])->name('GMcode.edit');
         Route::post('/update', [GMController::class, 'update'])->name('GMcode.update');
         Route::get('/delete/{id}', [GMController::class, 'delete'])->name('GMcode.delete');
+    });
+
+    // Nominee: GM Chain Code 
+    Route::group(['prefix' => 'chaincode/gm/nominee'], function(){
+        Route::get('/{id}', [GMNomineeController::class, 'index'])->name('GMcode.nominee.index');        
+        Route::get('/create/{id}', [GMNomineeController::class, 'create'])->name('GMcode.nominee.create');
+        Route::post('/store', [GMNomineeController::class, 'store'])->name('GMcode.nominee.store');
+        Route::get('/show/{id}', [GMNomineeController::class, 'show'])->name('GMcode.nominee.show'); 
+        Route::get('/edit/{id}', [GMNomineeController::class, 'edit'])->name('GMcode.nominee.edit');
+        Route::post('/update', [GMNomineeController::class, 'update'])->name('GMcode.nominee.update');
+        Route::get('/delete/{id}', [GMNomineeController::class, 'delete'])->name('GMcode.nominee.delete');   
     });
 
     // To register user

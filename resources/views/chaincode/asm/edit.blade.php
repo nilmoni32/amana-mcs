@@ -195,7 +195,7 @@
                                         @php $check = $rsm->rsm_code == $asm->rsm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $rsm->rsm_code }}" {{ $check }}>{{ $rsm->rsm_name }}</option>
+                                        <option value="{{ $rsm->rsm_code }}" {{ $check }}>{{ $rsm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
@@ -210,13 +210,13 @@
                                         @php $check = $dgm->dgm_code == $asm->dgm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $dgm->dgm_code }}" {{ $check }}>{{ $dgm->dgm_name }}</option>
+                                        <option value="{{ $dgm->dgm_code }}" {{ $check }}>{{ $dgm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
                                 <input type="hidden" name="dgm_name" id="dgm_name" value="{{ $asm->dgm_name }}">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label" for="gm_code">{{ __('Select GM') }}</label>
                                     <select name="gm_code" id="gm_code" class="form-control">
@@ -225,7 +225,7 @@
                                         @php $check = $gm->gm_code == $asm->gm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $gm->gm_code }}" {{ $check }}>{{ $gm->gm_name }}</option>
+                                        <option value="{{ $gm->gm_code }}" {{ $check }}>{{ $gm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div> 

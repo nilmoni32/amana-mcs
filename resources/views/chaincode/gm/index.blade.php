@@ -18,46 +18,69 @@
         <div class="tile">
             <div class="tile-body">
                 <div class="table-scrollbar">
-                    <table class="table table-hover table-bordered">
+                    <table class="table table-hover table-bordered" id="gmTable">
                         <thead>
                             <tr>
                                 <th> Sl </th>
-                                <th> Appoint. Date </th>
+                                <th> Appointment Date </th>
                                 <th> GM Code </th>
-                                <th> Name </th>                                
-                                <th> Branch Code </th>
-                                <th> Branch Name </th>
+                                <th> Name </th>
+                                <th> Contact No </th>                                
                                 <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach($gms as $gm)
-                                <tr>
-                                    <td>{{ $loop->index + 1  }}</td>
-                                    <td>{{ $gm->appointment_date }}</td>
-                                    <td>{{ $gm->gm_code }}</td>
-                                    <td>{{ $gm->name }}</td>
-                                    <td>{{ $gm->branch_code }}</td> 
-                                    <td>{{ $gm->branch_name }}</td>                                   
-                                    <td class="text-center">
-                                        <div class="btn-group" role="group" aria-label="Second group">
-                                            <a href="{{ route('GMcode.edit', $gm->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>                                       
-                                            <a href="{{ route('GMcode.delete', $gm->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
                     </table>
-                    <div class="d-flex justify-content-center">
-                        {!! $gms->links() !!}
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+{{-- we need to add  @stack('scripts') in the app.blade.php for the following scripts --}}
+@push('scripts')
+<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/sweetalert.min.js') }}"></script> 
+<script type="text/javascript">    
+   $(document).ready(function(){
+
+      // DataTable
+      $('#gmTable').DataTable({
+         processing: true,
+         serverSide: true,
+         ajax: "{{route('GMcode.getgmdata')}}",
+         columns: [
+            { data: 'id' },
+            { data: 'appointment_date' },           
+            { data: 'gm_code' },
+            { data: 'name' },
+            { data: 'contact_no' },                     
+            { data: 'options' },
+         ]
+      });
+
+      
+      $(document).on('click', '.delete-confirm', function(event){
+            event.preventDefault();
+            const url = $(this).attr('href');
+            swal({
+                title: 'Are you sure?',
+                text: 'This record and it`s details will be permanantly deleted!',
+                icon: 'warning',
+                buttons: ["Cancel", "Yes!"],
+            }).then(function(value) {
+                if (value) {
+                    window.location.href = url;
+                }
+            });
+        });
+      
+
+    });
+
+    
+    </script>
+@endpush
 
 
 

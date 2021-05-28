@@ -205,12 +205,13 @@
                                 <div class="form-group">
                                     <label class="control-label" for="asm_code">{{ __('Select ASM') }}</label>
                                     <select name="asm_code" id="asm_code" class="form-control">
-                                        @foreach($asms as $asm)
+                                        
+                                        @foreach($asms as $asm)                                      
                                         <option></option>
                                         @php $check = $asm->asm_code == $mo->asm_code ?
                                         'selected' : '';
-                                        @endphp
-                                        <option value="{{ $asm->asm_code }}" {{ $check }}>{{ $asm->asm_name }}</option>
+                                        @endphp                                         
+                                        <option value="{{ $asm->asm_code }}" {{ $check }}>{{ $asm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
@@ -224,8 +225,8 @@
                                         <option></option>
                                         @php $check = $rsm->rsm_code == $mo->rsm_code ?
                                         'selected' : '';
-                                        @endphp
-                                        <option value="{{ $rsm->rsm_code }}" {{ $check }}>{{ $rsm->rsm_name }}</option>
+                                        @endphp                                        
+                                        <option value="{{ $rsm->rsm_code }}" {{ $check }}>{{ $rsm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
@@ -265,7 +266,7 @@
                                         @php $check = $dgm->dgm_code == $mo->dgm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $dgm->dgm_code }}" {{ $check }}>{{ $dgm->dgm_name }}</option>
+                                        <option value="{{ $dgm->dgm_code }}" {{ $check }}>{{ $dgm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
@@ -280,7 +281,7 @@
                                         @php $check = $gm->gm_code == $mo->gm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $gm->gm_code }}" {{ $check }}>{{ $gm->gm_name }}</option>
+                                        <option value="{{ $gm->gm_code }}" {{ $check }}>{{ $gm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div> 

@@ -35,7 +35,7 @@ class ASMController extends Controller
             4   => 'rsm_code',
             5   => 'dgm_code',
             6   => 'gm_code',            
-            8   => 'id',
+            7   => 'id',
         );
 
         $totalData = Asm::count();

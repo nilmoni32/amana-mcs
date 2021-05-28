@@ -23,7 +23,7 @@
                     href="{{ route('ASMcode.nominee.index', $asm->id)}}">{{ __('Nominee List') }}</a>
             </li>
             <li>
-                <a class="treeview-item bg-white text-primary {{ Route::currentRouteName() == 'BMcode.nominee.create' ? 'current' : '' }}"
+                <a class="treeview-item bg-white text-primary {{ Route::currentRouteName() == 'ASMcode.nominee.create' ? 'current' : '' }}"
                     href="{{ route('ASMcode.nominee.create', $asm->id)}}">{{ __('Add Nominee') }}</a>
             </li>
         </ul>

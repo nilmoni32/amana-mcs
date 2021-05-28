@@ -82,9 +82,9 @@
                         <div class="row"> 
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="control-label" for="date_of_birth">{{ __('Date of Birth') }}</label>
+                                    <label class="control-label" for="date_of_birth">{{ __('Date of Birth') }}<span class="text-danger"> *</span></label>
                                     <input class="form-control datetimepicker @error('date_of_birth') is-invalid @enderror" type="text"
-                                        name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}" placeholder="choose date (d-m-Y)" autocomplete="off">
+                                        name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}" placeholder="choose date (d-m-Y)" autocomplete="off" required>
                                     @error('date_of_birth') {{ $message }}@enderror
                                 </div>
                             </div>                       

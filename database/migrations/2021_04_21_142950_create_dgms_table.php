@@ -40,7 +40,7 @@ class CreateDgmsTable extends Migration
             $table->string('head_ofc_code')->nullable();            
             
             //chain code
-            $table->string('gm_code')->unique()->nullable();
+            $table->string('gm_code')->nullable();
             $table->string('gm_name')->nullable();
             $table->string('gm_code_change_notes')->nullable();
             

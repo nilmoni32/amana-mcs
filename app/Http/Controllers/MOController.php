@@ -245,16 +245,15 @@ class MOController extends Controller
         return view('chaincode.mo.show', compact('mo'));  
     }
 
-    public function edit($id){
+    public function edit($id){        
         $mo = Mo::find($id);
-
         $branches = Branch::orderBy('created_at', 'desc')->get();
         //get Branch Manager lists
         $bms = Bm::orderBy('created_at', 'desc')->get();
         //get area sales manager lists
-        $asms = Asm::orderBy('created_at', 'desc')->get();
+        $asms = Asm::orderBy('created_at', 'desc')->get();        
         //get regional sales manager lists
-        $rsms = Rsm::orderBy('created_at', 'desc')->get();
+        $rsms = Rsm::orderBy('created_at', 'desc')->get();        
         //get deputy manager lists
         $dgms = Dgm::orderBy('created_at', 'desc')->get();
         //get general manager lists

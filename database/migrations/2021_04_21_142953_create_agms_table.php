@@ -43,11 +43,11 @@ class CreateAgmsTable extends Migration
             //no nominee info is required for this table and it is used to hold old data only.
            
            
-            $table->string('dgm_code')->unique()->nullable();
+            $table->string('dgm_code')->nullable();
             $table->string('dgm_name')->nullable();
             $table->string('dgm_code_change_notes')->nullable();
 
-            $table->string('gm_code')->unique()->nullable();
+            $table->string('gm_code')->nullable();
             $table->string('gm_name')->nullable();
             $table->string('gm_code_change_notes')->nullable();
 

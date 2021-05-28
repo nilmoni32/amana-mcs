@@ -195,7 +195,7 @@
                                         @php $check = $asm->asm_code == $bm->asm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $asm->asm_code }}" {{ $check }}>{{ $asm->asm_name }}</option>
+                                        <option value="{{ $asm->asm_code }}" {{ $check }}>{{ $asm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
@@ -210,7 +210,7 @@
                                         @php $check = $rsm->rsm_code == $bm->rsm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $rsm->rsm_code }}" {{ $check }}>{{ $rsm->rsm_name }}</option>
+                                        <option value="{{ $rsm->rsm_code }}" {{ $check }}>{{ $rsm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
@@ -225,7 +225,7 @@
                                         @php $check = $dgm->dgm_code == $bm->dgm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $dgm->dgm_code }}" {{ $check }}>{{ $dgm->dgm_name }}</option>
+                                        <option value="{{ $dgm->dgm_code }}" {{ $check }}>{{ $dgm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>  
@@ -240,7 +240,7 @@
                                         @php $check = $gm->gm_code == $bm->gm_code ?
                                         'selected' : '';
                                         @endphp
-                                        <option value="{{ $gm->gm_code }}" {{ $check }}>{{ $gm->gm_name }}</option>
+                                        <option value="{{ $gm->gm_code }}" {{ $check }}>{{ $gm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div> 
